@@ -12,4 +12,5 @@
 
 # ENV EXAMPLE #
 port=3000
+
 ACCESS_TOKEN=secret_key
