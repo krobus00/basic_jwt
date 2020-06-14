@@ -84,9 +84,9 @@ router.get('/info', auth.authToken, async(req, res) => {
     let tokenList = await getTokenList(req.info.id, res).catch(result => {
         res.json(result)
     })
+    req.info.name = await auth.getName(req.info.id)
     req.info.level = await auth.checkLevel(req.info.id)
-    req.info.token = []
-    req.info.token.push(tokenList)
+    req.info.token = tokenList
     res.json(auth.generateOutput(false, "", req.info))
 })
 router.get('/admin', auth.authToken, auth.permit("admin"), async(req, res) => {
